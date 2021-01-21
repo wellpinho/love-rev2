@@ -1,11 +1,17 @@
 import { Router } from 'express'
 import { celebrate, Joi, Segments, errors } from 'celebrate'
 import UserController from '../controller/UserController'
+import isAuthenticated from '../../../shared/http/middleware/isAuthenticated'
+import multer from 'multer'
+import uploadConfig from '@config/upload'
+import UpdateUserAvatarController from '../controller/UpdateUserAvatarController'
 
 const userRoutes = Router()
 const userController = new UserController()
+const usersAvatarController = new UpdateUserAvatarController()
+const upload = multer(uploadConfig)
 
-userRoutes.get('/', userController.index)
+userRoutes.get('/', isAuthenticated, userController.index)
 
 userRoutes.get('/:id',
   celebrate({
@@ -34,6 +40,12 @@ userRoutes.put('/:id',
       id: Joi.string().required()
     }
   }), userController.update)
+
+userRoutes.patch('/avatar',
+  isAuthenticated,
+  upload.single('avatar'),
+  usersAvatarController.update
+)
 
 userRoutes.delete('/:id',
   celebrate({
