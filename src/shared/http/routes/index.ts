@@ -1,5 +1,5 @@
 import { Router } from 'express'
-// import productRouter from '@modules/products/routes/Products.routes'
+import productRoutes from '@modules/product/routes/Product.routes'
 // import usersRouter from '@modules/users/routes/Users.routes'
 // import sessionRouter from '@modules/users/routes/SessionsRoutes'
 // import passwordRouter from '@modules/users/routes/Password.routes'
@@ -8,13 +8,7 @@ import { Router } from 'express'
 // import orderRoutes from '@modules/orders/routes/Order.routes'
 const routes = Router()
 
-routes.get('/', (req, res) => {
-  return res.status(200).json({
-    message: 'Hello Dev!'
-  })
-})
-
-// routes.use('/products', productRouter)
+routes.use('/products', productRoutes)
 // routes.use('/users', usersRouter)
 // routes.use('/sessions', sessionRouter)
 // routes.use('/password', passwordRouter)
