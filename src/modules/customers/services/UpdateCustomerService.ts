@@ -14,12 +14,14 @@ export default class UpdateCustomerService {
     const customersRepository = getCustomRepository(CustomersRepository)
 
     const customer = await customersRepository.findById(id)
+
     if (!customer) {
-      throw new AppError('Custom no tfound.')
+      throw new AppError('Custom not found.')
     }
 
     const customerExists = await customersRepository.findByEmail(email)
-    if (!customerExists && email !== customer.email) {
+
+    if (customerExists && email !== customer.email) {
       throw new AppError('There is already one customer with this email.')
     }
 
