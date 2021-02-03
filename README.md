@@ -146,7 +146,12 @@ touch src/server.ts
 Usaremos a biblioteca __ts-node-dev__ para execução da aplicação em desenvolvimento.
 
 Incluir o script para rodar o __ts-node-dev__ no arquivo __package.json__.
-``` "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts", ```
+```     
+  "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/http/server.ts",
+  "lint": "eslint . --ext .ts",
+  "lint-fix": "eslint . --ext .ts --fix",
+  "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js", 
+```
 
 [Configurando EditorConfig](documentacao/EditorConfig.md)
 
