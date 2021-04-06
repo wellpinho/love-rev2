@@ -7,6 +7,8 @@
 ## Iniciar a aplicação Node.js com Typescript
 ``` yarn init -y ```
 
+``` yarn add typescript ts-node-dev @types/node -D ```
+
 - Fazer a instalação do Typescript na pasta do projeto, como uma dependência de desenvolvimento. Como o código final é convertido para javascript antes de ser disponibilizado online, só precisaremos do Typescript em ambiente de desenvolvimento.
 ``` yarn add typescript ts-node-dev @types/node -D ```
 
